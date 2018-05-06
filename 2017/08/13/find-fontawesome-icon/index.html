@@ -10,7 +10,7 @@
   
   <title>
     
-      Hello World | Tony&#39;s Blog
+      查找 FontAwesome 图标的正确姿势 | Tony&#39;s Blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,8 +138,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>Hello World</h2>
-  <p class="post-date">2018-05-06</p>
+  <h2>查找 FontAwesome 图标的正确姿势</h2>
+  <p class="post-date">2017-08-13</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -147,18 +147,20 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>经历了 CSDN、博客园、点点网、开源中国、WordPress、Hexo、Typecho，以及自己写的一个博客程序，最近听说 GitHub Pages 支持了 https，于是再次回到 Hexo，使用 GitHub Pages 重建了我的博客，估计以后也不会再折腾了。</p>
-<p>这两年基本没写什么有价值的东西（虽然前几年基本也没写什么），只记了一些流水账，吐槽了一些坑爹的人和事。早期博客由于种种原因，丢失了一些，留下的一些现在看来觉得以前的自己好肤浅好傻X，觉得以前的自己傻X是一件好事，起码说明自己在进步，这也是写博客的意义之一吧。</p>
-<p>以后尽量每月更新，记录自己的想法和做法，希望能帮助更多人。</p>
-<p>PS: 如果把人坑了就不要怪我了，那不是我的本意 :)。</p>
+    <section class="markdown-content"><p>在做管理后台的时候，由于界面用的是 <a href="http://fontawesome.io/icons/" target="_blank" rel="noopener">FontAwesome</a> 的图标，所以需要经常去找合适的图标。每次都很都疼，因为…</p>
+<p>之前一直以为 FontAwesome 的图标搜索用的是精确搜索，就是直接根据 icon 的名字去匹配，所以懒得去用，一直都是猜测图标的名称然后在网页中 <code>Ctrl+F</code> 查找的，万万没想到…</p>
+<p>原来人家的搜索是真正的搜索，不多说了，都是泪，先直接上图：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fr26j0rityj30yg0cfjs1.jpg" alt="FontAwesome Search"></p>
+<p>为了这个“实验室”的图标，我用 <code>Ctrl+F</code> 尝试了 <code>bottle</code>、<code>lab</code>、<code>labs</code>、<code>experiment</code>、<code>test</code> 等等等，都没查找到，最后没办法，一个个地找才找到，花费的时间超过 10分钟！我一怒之下决定写一个搜索的插件，项目脚手架都搭建好了，这时发现原来官方的搜索竟然就是这么好用！</p>
+<p>泪奔~</p>
 </section>
     <!-- Tags START -->
     
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tags#hello" >
-    <span class="tag-code">hello</span>
+  <a href="/tags#前端" >
+    <span class="tag-code">前端</span>
   </a>
 
       </div>
@@ -169,13 +171,20 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2017/08/13/find-fontawesome-icon/">
+      <a class="nav-left" href="/2017/07/12/a-business-trip/">
         <span class="nav-arrow">← </span>
         
-          查找 FontAwesome 图标的正确姿势
+          记一次神奇的出差经历
         
       </a>
     
+    
+      <a class="nav-right" href="/2018/05/06/hello-world/">
+        
+          Hello World
+        
+        <span class="nav-arrow"> →</span>
+      </a>
     
   </div>
 
@@ -209,7 +218,7 @@
 
 <script>
   (function () {
-    var url = 'https://tony.engineer/2018/05/06/hello-world/';
+    var url = 'https://tony.engineer/2017/08/13/find-fontawesome-icon/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -265,7 +274,7 @@
     // var gitmentConfig = "";
     // if (gitmentConfig !== 'undefined') {
     //   var gitment = new Gitment({
-    //     id: "Hello World",
+    //     id: "查找 FontAwesome 图标的正确姿势",
     //     owner: "",
     //     repo: "",
     //     oauth: {

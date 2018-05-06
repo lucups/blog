@@ -34,6 +34,7 @@ a {
   cursor: pointer;
 }
 p {
+  margin: 1em 0;
   word-spacing: 0.05em;
 }
 pre {

@@ -1,5 +1,6 @@
 (function ($) {
   console.log('© Theme-Vexo | https://github.com/yanm1ng/hexo-theme-vexo')
+  console.log('© TONY.ENGINEER | https://tony.engineer | 转载需注明作者及来源')
   var app = $('.app-body')
   var header = $('.header')
   var banner = document.getElementById('article-banner') || false
