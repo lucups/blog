@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Tony&#39;s Blog">
+  <meta name="keyword" content="php, java, bigdata">
+  
+    <link rel="shortcut icon" href="/css/images/logo.jpg">
+  
+  <title>
+    
+      关于使用 Symfony2 开发时遇到的一个诡异的 bug | Tony&#39;s Blog
+    
+  </title>
+  <link href="/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/libs/nprogress/nprogress.css" rel="stylesheet">
+  <link href="/libs/highlight.js/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="/libs/jquery-2.2.3.min.js"></script>
+  <script src="/libs/geopattern-1.2.3.min.js"></script>
+  <script src="/libs/nprogress/nprogress.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.staticfile.org/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.jpg" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Tony's Blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>关于使用 Symfony2 开发时遇到的一个诡异的 bug</h2>
+  <p class="post-date">2013-10-18</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>最近在使用symfony 2开发，处于刚入门阶段。昨天完成了注册登录模块，开发阶段一直没有问题，快完成时诡异的错误出现了：注册成功后，查询数据表，记录存在，但登录始终报错。由于登录是使用symfony2自带的安全框架，又不知道 symfony2有什么debug的好方法，所以只能检查代码，继续读symfony2文档，因为之前做过登录注册模块，所以对配置什么的还是蛮有信心，确信不会错，搞了半天不知道问题在哪。注册成功，登录始终不成功。</p>
+<h3 id="衣带渐宽终不悔，为-bug-消的人憔悴"><a href="#衣带渐宽终不悔，为-bug-消的人憔悴" class="headerlink" title="衣带渐宽终不悔，为 bug 消的人憔悴"></a>衣带渐宽终不悔，为 bug 消的人憔悴</h3><p>最后还是同事过来，问我用什么加密，然后试图寻找登录加密与注册加密的结果是否一致。不成功，因为login的过程完全由symfony来完成的，查文档一时又找不到login具体的代码，最后，我们找了一个在线加密网站，比对加密结果和注册加密结果是否一致，最后结果是一致。。。蛋疼！尼妈这错太诡异了！难道真要我这个刚入门的去看框架源码？？？</p>
+<h3 id="众里寻bug千百度，蓦然回首，bug-却在灯火阑珊处"><a href="#众里寻bug千百度，蓦然回首，bug-却在灯火阑珊处" class="headerlink" title="众里寻bug千百度，蓦然回首，bug 却在灯火阑珊处"></a>众里寻bug千百度，蓦然回首，bug 却在灯火阑珊处</h3><p>正当我垂头丧气心如死灰批头散发郁闷的要死的时候，突然！眼前一亮！为什么网站上加密结果的最后是两个等号而数据库里面的没有等号？？？！！！我擦，终于找到了！经过测试，发现快完成的时候改用了架构师设计的数据库，password字段长度只有50,而我之前设计的是255,且密码在采用sha512算法加密后长度大于50,导致写入数据库的只有前面的50个字符，所以我开始比对的时候竟然没有发现这个问题。。。（我看开头几位都一样就没有关注后面的。。。）！！！而我的印象里，如果字符串大于数据库设计的长度应该是要报错的，所以要么是mysql截取了，要么是symfony截取了，具体原因等下次再研究吧。。。</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#开发" >
+    <span class="tag-code">开发</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2013/10/11/fix-a-bug/">
+        <span class="nav-arrow">← </span>
+        
+          一次愉快的 bug 修复经历
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2013/11/30/the-road-of-my-linux-dist/">
+        
+          我的Linux发行版/桌面环境选择之路
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#问题描述"><span class="toc-nav-text">问题描述</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#衣带渐宽终不悔，为-bug-消的人憔悴"><span class="toc-nav-text">衣带渐宽终不悔，为 bug 消的人憔悴</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#众里寻bug千百度，蓦然回首，bug-却在灯火阑珊处"><span class="toc-nav-text">众里寻bug千百度，蓦然回首，bug 却在灯火阑珊处</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://blog.tony.engineer/2013/10/18/fixed-a-bug/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    // var gitmentConfig = "";
+    // if (gitmentConfig !== 'undefined') {
+    //   var gitment = new Gitment({
+    //     id: "关于使用 Symfony2 开发时遇到的一个诡异的 bug",
+    //     owner: "",
+    //     repo: "",
+    //     oauth: {
+    //       client_id: "",
+    //       client_secret: ""
+    //     },
+    //     theme: {
+    //       render(state, instance) {
+    //         const container = document.createElement('div')
+    //         container.lang = "en-US"
+    //         container.className = 'gitment-container gitment-root-container'
+    //         container.appendChild(instance.renderHeader(state, instance))
+    //         container.appendChild(instance.renderEditor(state, instance))
+    //         container.appendChild(instance.renderComments(state, instance))
+    //         container.appendChild(instance.renderFooter(state, instance))
+    //         return container;
+    //       }
+    //     }
+    //   })
+    //   gitment.render(document.getElementById('comments'))
+    // }
+    
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 <a href="https://tony.engineer">TONY.ENGINEER</a>
+    | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> and <a href="https://pages.github.com/" target="_blank">Github Pages</a>, Theme by <a href="https://github.com/yanm1ng/hexo-theme-vexo" target="_blank">Vexo</a>.
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("/libs/fastclick.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("/libs/highlight.js/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = 'fd5f42d8e7fb0baecce9cc47e5b13d11';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

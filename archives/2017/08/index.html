@@ -13,14 +13,14 @@
       Tony&#39;s Blog
     
   </title>
-  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link href="/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/libs/nprogress/nprogress.css" rel="stylesheet">
+  <link href="/libs/highlight.js/styles/tomorrow.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/plugins/gitment.css">
-  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
-  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/libs/jquery-2.2.3.min.js"></script>
+  <script src="/libs/geopattern-1.2.3.min.js"></script>
+  <script src="/libs/nprogress/nprogress.js"></script>
   <script src="/js/qrious.js"></script>
 <script src="/js/gitment.js"></script>
   
@@ -44,7 +44,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.staticfile.org/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <!-- MathJax support END -->
   
 
@@ -153,6 +153,21 @@
     
     
       <div class="section-list-item">
+        <a href="/2018/10/26/what-i-know-about-blockchain/" class="archive-title">我所了解的区块链</a>
+        <p class="archive-date">10-26</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2018/07/03/the-experience-of-tuniu-backpack/" class="archive-title">途牛原创双肩包初级体验</a>
+        <p class="archive-date">07-03</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2018/05/08/goto-ad-industry/" class="archive-title">进入广告行业</a>
+        <p class="archive-date">05-08</p>
+      </div>
+    
+      <div class="section-list-item">
         <a href="/2018/05/06/hello-world/" class="archive-title">Hello World</a>
         <p class="archive-date">05-06</p>
       </div>
@@ -173,12 +188,12 @@
       </div>
     
       <div class="section-list-item">
-        <a href="/2017/07/12/bullshitting01/" class="archive-title">改变世界的不是技术，而是运用技术的能力</a>
+        <a href="/2017/07/12/a-business-trip/" class="archive-title">记一次神奇的出差经历</a>
         <p class="archive-date">07-12</p>
       </div>
     
       <div class="section-list-item">
-        <a href="/2017/07/12/a-business-trip/" class="archive-title">记一次神奇的出差经历</a>
+        <a href="/2017/07/12/bullshitting01/" class="archive-title">改变世界的不是技术，而是运用技术的能力</a>
         <p class="archive-date">07-12</p>
       </div>
     
@@ -258,6 +273,11 @@
       </div>
     
       <div class="section-list-item">
+        <a href="/2013/10/18/fixed-a-bug/" class="archive-title">关于使用 Symfony2 开发时遇到的一个诡异的 bug</a>
+        <p class="archive-date">10-18</p>
+      </div>
+    
+      <div class="section-list-item">
         <a href="/2013/10/11/fix-a-bug/" class="archive-title">一次愉快的 bug 修复经历</a>
         <p class="archive-date">10-11</p>
       </div>
@@ -269,7 +289,7 @@
 
 <script>
   (function () {
-    var url = 'https://tony.engineer/archives/2017/08/index.html';
+    var url = 'https://blog.tony.engineer/archives/2017/08/index.html';
     $('#article-banner').geopattern(url);
     $('.header').removeClass('fixed-header');
   })();
@@ -279,7 +299,8 @@
 </div>
     <footer class="app-footer">
   <p class="copyright">
-    &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>, Theme by <a href="https://github.com/yanm1ng/hexo-theme-vexo" target="_blank">Vexo</a>.
+    &copy; 2018 <a href="https://tony.engineer">TONY.ENGINEER</a>
+    | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> and <a href="https://pages.github.com/" target="_blank">Github Pages</a>, Theme by <a href="https://github.com/yanm1ng/hexo-theme-vexo" target="_blank">Vexo</a>.
   </p>
 </footer>
 
@@ -294,14 +315,14 @@
   }
 </script>
 <script>
-  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+  async("/libs/fastclick.js", function(){
     FastClick.attach(document.body);
   })
 </script>
 
 <script>
   var hasLine = 'true';
-  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+  async("/libs/highlight.js/highlight.min.js", function(){
     $('figure pre').each(function(i, block) {
       var figure = $(this).parents('figure');
       if (hasLine === 'false') {
@@ -319,6 +340,18 @@
   })
 </script>
 <!-- Baidu Tongji -->
+
+<script>
+    var _baId = 'fd5f42d8e7fb0baecce9cc47e5b13d11';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 <script src="/js/script.js"></script>
   </body>

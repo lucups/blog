@@ -13,14 +13,14 @@
       我的Linux发行版/桌面环境选择之路 | Tony&#39;s Blog
     
   </title>
-  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link href="/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/libs/nprogress/nprogress.css" rel="stylesheet">
+  <link href="/libs/highlight.js/styles/tomorrow.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/plugins/gitment.css">
-  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
-  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/libs/jquery-2.2.3.min.js"></script>
+  <script src="/libs/geopattern-1.2.3.min.js"></script>
+  <script src="/libs/nprogress/nprogress.js"></script>
   <script src="/js/qrious.js"></script>
 <script src="/js/gitment.js"></script>
   
@@ -44,7 +44,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.staticfile.org/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <!-- MathJax support END -->
   
 
@@ -178,10 +178,10 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2013/10/11/fix-a-bug/">
+      <a class="nav-left" href="/2013/10/18/fixed-a-bug/">
         <span class="nav-arrow">← </span>
         
-          一次愉快的 bug 修复经历
+          关于使用 Symfony2 开发时遇到的一个诡异的 bug
         
       </a>
     
@@ -225,7 +225,7 @@
 
 <script>
   (function () {
-    var url = 'https://tony.engineer/2013/11/30/the-road-of-my-linux-dist/';
+    var url = 'https://blog.tony.engineer/2013/11/30/the-road-of-my-linux-dist/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -312,7 +312,8 @@
 </div>
     <footer class="app-footer">
   <p class="copyright">
-    &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>, Theme by <a href="https://github.com/yanm1ng/hexo-theme-vexo" target="_blank">Vexo</a>.
+    &copy; 2018 <a href="https://tony.engineer">TONY.ENGINEER</a>
+    | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> and <a href="https://pages.github.com/" target="_blank">Github Pages</a>, Theme by <a href="https://github.com/yanm1ng/hexo-theme-vexo" target="_blank">Vexo</a>.
   </p>
 </footer>
 
@@ -327,14 +328,14 @@
   }
 </script>
 <script>
-  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+  async("/libs/fastclick.js", function(){
     FastClick.attach(document.body);
   })
 </script>
 
 <script>
   var hasLine = 'true';
-  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+  async("/libs/highlight.js/highlight.min.js", function(){
     $('figure pre').each(function(i, block) {
       var figure = $(this).parents('figure');
       if (hasLine === 'false') {
@@ -352,6 +353,18 @@
   })
 </script>
 <!-- Baidu Tongji -->
+
+<script>
+    var _baId = 'fd5f42d8e7fb0baecce9cc47e5b13d11';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 <script src="/js/script.js"></script>
   </body>
