@@ -8,14 +8,20 @@
   <link rel="shortcut icon" href="/css/images/logo.jpg">
   <title>Tony&#39;s Blog</title>
   <style>
-    /**{font-family: 'Courier New', 'Microsoft YaHei'}*/
+    body{background: #f3f3f3;}
     *{color:#35200d;font-family: 'Courier New'}
-    /*{color:#35200d;}*/
-    #container{margin: 0 auto;width: 540px;}
+    #container{margin: 0 auto; width: 540px;}
     #container > h1 { text-align: center; }
-    #container > ul { text-align: left; }
-    #container > ul > li > span { float:right !important; }
+    #container > ul { text-align: left; width: 100%; padding-inline-start: 0; }
+    a { text-decoration:none; }
+    ul > li { margin: 6px 0; border-bottom: 0px solid black; list-style:none; }
     footer { text-align: center; }
+    span { margin: 0; padding: 0; }
+
+    @media screen and (max-width: 560px) {
+      #container{margin: 0 auto;width: 100%;}
+      #container > ul > li > span { display: block; }
+   }
   </style>
 </head>
 <body>
